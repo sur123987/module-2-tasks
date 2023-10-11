@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <textarea></textarea>
+    <button onclick="inputArea()">convert to camelcase</button>
+    <script>
+      function convertToCamelCase(inputText) {
+        let camelCase = "";
+        let nextCharCapital = false;
+
+        for (let i = 0; i < inputText.length; i++) {
+          const char = inputText[i];
+
+          if (char === "_") {
+            nextCharCapital = true;
+          } else {
+            camelCase += nextCharCapital
+              ? char.toUpperCase()
+              : char.toLowerCase();
+            nextCharCapital = false;
+          }
+        }
+
+        console.log(camelCase);
+      }
+
+      function inputArea() {
+        const textarea = document.querySelector("textarea");
+        const text = textarea.value;
+
+        convertToCamelCase(text);
+      }
+    </script>
+  </body>
+</html>
